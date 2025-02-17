@@ -35,7 +35,7 @@
 from django.shortcuts import get_object_or_404
 from rest_framework import viewsets, generics
 from .models import Company, Employee
-from .serializers import CompanySerializer, EmployeeSerializer, EmployeeCreateSerializer
+from .serializers import CompanySerializer, EmployeeSerializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
@@ -58,12 +58,7 @@ class CompanyViewSet(viewsets.ModelViewSet):
 
 class EmployeeListCreateView(generics.ListCreateAPIView):
     queryset = Employee.objects.all()
-    serializer_class = EmployeeCreateSerializer  
-
-    def get_serializer_class(self):
-        if self.request.method == 'POST':
-            return EmployeeCreateSerializer
-        return EmployeeSerializer  
+    serializer_class = EmployeeSerializer    
 
 class EmployeeUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Employee.objects.all()

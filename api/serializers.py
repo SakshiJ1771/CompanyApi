@@ -11,12 +11,7 @@ class CompanySerializer(serializers.HyperlinkedModelSerializer):
 
 class EmployeeSerializer(serializers.ModelSerializer):
     id = serializers.ReadOnlyField()
-    #company = CompanySerializer()
     class Meta:
         model = Employee
         fields = "__all__"
-
-class EmployeeCreateSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Employee
-        fields = "__all__"     
+     
