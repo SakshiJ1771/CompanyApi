@@ -58,12 +58,12 @@ class CompanyViewSet(viewsets.ModelViewSet):
 
 class EmployeeListCreateView(generics.ListCreateAPIView):
     queryset = Employee.objects.all()
-    serializer_class = EmployeeCreateSerializer  # Use the create serializer for POST requests
+    serializer_class = EmployeeCreateSerializer  
 
     def get_serializer_class(self):
         if self.request.method == 'POST':
             return EmployeeCreateSerializer
-        return EmployeeSerializer  # Use the regular serializer for GET requests
+        return EmployeeSerializer  
 
 class EmployeeUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Employee.objects.all()
